@@ -1,19 +1,7 @@
-import { Hono } from 'hono';
-import type { HelloType } from '@packages/types';
-// import initDB from './db';
+import startServer from './cmd';
 
-async function init() {
-  // const mongoClient = await initDB();
-  const app = new Hono();
-
-  app.get('/', (c) => {
-    return c.text('Hello Hono!');
-  });
-
-  app.get('/hello', async (c) => {
-    const res: HelloType = { content: 'HELLO' };
-    return c.json(res);
-  });
+async function main() {
+  const app = await startServer();
 
   const server = Bun.serve({
     port: 3001,
@@ -24,4 +12,4 @@ async function init() {
   console.log('server running', server.port);
 }
 
-init().catch(console.error);
+main().catch(console.error);
