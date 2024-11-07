@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@packages/types": "workspace:*",
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "mongodb": "^6.10.0"
   }
 }
