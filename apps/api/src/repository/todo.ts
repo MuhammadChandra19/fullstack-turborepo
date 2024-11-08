@@ -12,7 +12,7 @@ const todoRepository = (db: Db) => {
       todo.updatedAt = new Date();
 
       const result = await collection.insertOne(todo);
-      console.log('Todo added with ID:', result.insertedId);
+      return result.insertedId;
     } catch (e) {
       console.error('Error adding todo:', e);
       throw new Error('Failed to add todo to the database');

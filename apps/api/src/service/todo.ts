@@ -8,8 +8,8 @@ const todoService = (repo: TodoRepo) => {
   app.post('/', async (c: Context) => {
     const body = await c.req.json();
     try {
-      await repo.create(body);
-      return c.json({ message: 'Todo Added' }, 201);
+      const res = await repo.create(body);
+      return c.json({ insertedID: res.toHexString() }, 201);
     } catch (e) {
       c.status(500);
       return c.json({ message: e });
@@ -45,6 +45,17 @@ const todoService = (repo: TodoRepo) => {
     try {
       const res = await repo.getByID(id);
       return c.json({ todo: res }, 200);
+    } catch (e) {
+      c.status(500);
+      return c.json({ message: e });
+    }
+  });
+
+  app.delete('/:id', async (c: Context) => {
+    const id = c.req.param('id');
+    try {
+      await repo.remove(id);
+      return c.json({ message: 'success delete' }, 200);
     } catch (e) {
       c.status(500);
       return c.json({ message: e });

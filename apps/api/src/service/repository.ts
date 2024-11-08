@@ -1,8 +1,9 @@
 import { Todo } from '@/entity/todo';
 import { Pagination, TodoType } from '@packages/types';
+import { ObjectId } from 'mongodb';
 
 export interface TodoRepo {
-  create: (todo: Todo) => Promise<void>;
+  create: (todo: Todo) => Promise<ObjectId>;
   getByID: (id: string) => Promise<Todo | null>;
   list: (
     id: string,
