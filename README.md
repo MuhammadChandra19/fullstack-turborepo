@@ -22,3 +22,11 @@ To install BUN, run:
 ```bash
 curl -fsSL https://bun.sh/install | bash
 ```
+
+## Learn More
+
+You can learn more in the [Vite documentation](https://vitejs.dev/guide/).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+To learn more about [Turborepo](https://turbo.build/repo/docs).
